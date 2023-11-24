@@ -5,7 +5,7 @@
     "scope": "/",
     "start_url": "/",
     "name": "pwa-next",
-    "short_name": "pwa",
+    "short_name": "ToDo",
     "description": "pwa web application ",
     "icons": [
         {
