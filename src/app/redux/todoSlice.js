@@ -1,14 +1,15 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-
 export const todosSlice = createSlice({
     name: 'todos',
     initialState: {
         todos: [],
     },
     reducers: {
+        setTodos: (state, action) => {
+            state.todos = action.payload;
+        },
         addTodo: (state, action) => {
-
             state.todos.push({
                 id: Date.now(),
                 text: action.payload,
@@ -22,9 +23,13 @@ export const todosSlice = createSlice({
             const index = state.todos.findIndex((todo) => todo.id === action.payload.id);
             state.todos[index].text = action.payload.text;
         },
+        completeTodo: (state, action) => {
+            const index = state.todos.findIndex((todo) => todo.id === action.payload);
+            state.todos[index].completed = !state.todos[index].completed;
+        },
     },
 });
 
-export const { addTodo, removeTodo, editTodo } = todosSlice.actions;
+export const { setTodos, addTodo, removeTodo, editTodo, completeTodo } = todosSlice.actions;
 
 export default todosSlice.reducer;
